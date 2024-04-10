@@ -1,11 +1,10 @@
 package hello.itemservice.domain.item;
 
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
-@Getter
-@Setter
+import java.util.List;
+
+@Data
 public class Item {
 
     private Long id;
@@ -13,12 +12,15 @@ public class Item {
     private Integer price;
     private Integer quantity;
 
-    public Item(){
+    private Boolean open;
+    private List<String> regions;
+    private ItemType itemType;
+    private String deliveryCode;
 
+    public Item() {
     }
 
-    public Item( String itemName, Integer price, Integer quantity) {
-
+    public Item(String itemName, Integer price, Integer quantity) {
         this.itemName = itemName;
         this.price = price;
         this.quantity = quantity;
