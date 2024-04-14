@@ -7,7 +7,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 class ItemServiceApplicationTests {
 
 	@Test
-	void contextLoads() {
+	void helloMessage() {
+
 	}
 
 }
