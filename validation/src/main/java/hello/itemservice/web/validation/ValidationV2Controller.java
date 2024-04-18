@@ -1,4 +1,4 @@
-package hello.itemservice.validation.v2;
+package hello.itemservice.web.validation;
 
 import hello.itemservice.domain.item.DeliveryCode;
 import hello.itemservice.domain.item.Item;
@@ -13,10 +13,15 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 import org.springframework.validation.ValidationUtils;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 @Slf4j
@@ -25,6 +30,13 @@ import java.util.*;
 public class ValidationV2Controller {
 
     private final ItemRepository itemRepository;
+    private final ItemValidator itemValidator;
+
+    @InitBinder
+    public void init(WebDataBinder dataBinder){
+        dataBinder.addValidators(itemValidator);
+
+    }
 
 
     @ModelAttribute("regions")
@@ -183,7 +195,7 @@ public class ValidationV2Controller {
         return "redirect:/validation/v2/items/{itemId}";
     }
 
-    @PostMapping("/add")
+    // @PostMapping("/add")
     public String addItemV4(@ModelAttribute Item item, BindingResult bindingResult,
                             RedirectAttributes redirectAttributes) {
 
@@ -191,7 +203,7 @@ public class ValidationV2Controller {
         log.info("target={}", bindingResult.getTarget());
 
         if (!StringUtils.hasText(item.getItemName())) {
-            bindingResult.rejectValue("itemName","required");
+            bindingResult.rejectValue("itemName", "required");
 
         }
         if (!StringUtils.hasText(item.getItemName())) {
@@ -201,10 +213,10 @@ public class ValidationV2Controller {
 
 
         if (item.getPrice() == null || item.getPrice() < 1000 || item.getPrice() > 1000000) {
-            bindingResult.rejectValue("price","range",new Object[]{1000,1000000},null);
+            bindingResult.rejectValue("price", "range", new Object[]{1000, 1000000}, null);
         }
         if (item.getQuantity() == null || item.getQuantity() > 10000) {
-            bindingResult.rejectValue("quantity","max",new Object[]{9999},null);
+            bindingResult.rejectValue("quantity", "max", new Object[]{9999}, null);
         }
 //특정 필드 예외가 아닌 전체 예외
         if (item.getPrice() != null && item.getQuantity() != null) {
@@ -214,6 +226,42 @@ public class ValidationV2Controller {
 
             }
         }
+        //오류 시 바로 다시 지금 URL롤 새로고침처럼 제자리 이동
+        if (bindingResult.hasErrors()) {
+            log.info("errors={}", bindingResult);
+            return "validation/v2/addForm";
+        }
+//성공 로직
+        Item savedItem = itemRepository.save(item);
+        redirectAttributes.addAttribute("itemId", savedItem.getId());
+        redirectAttributes.addAttribute("status", true);
+        return "redirect:/validation/v2/items/{itemId}";
+    }
+
+    //@PostMapping("/add")
+    public String addItemV5(@ModelAttribute Item item, BindingResult bindingResult,
+                            RedirectAttributes redirectAttributes) {
+
+        itemValidator.validate(item, bindingResult);
+
+        //오류 시 바로 다시 지금 URL롤 새로고침처럼 제자리 이동
+        if (bindingResult.hasErrors()) {
+            log.info("errors={}", bindingResult);
+            return "validation/v2/addForm";
+        }
+//성공 로직
+        Item savedItem = itemRepository.save(item);
+        redirectAttributes.addAttribute("itemId", savedItem.getId());
+        redirectAttributes.addAttribute("status", true);
+        return "redirect:/validation/v2/items/{itemId}";
+    }
+    @PostMapping("/add")
+    public String addItemV6(@Validated @ModelAttribute Item item, BindingResult bindingResult,
+                            RedirectAttributes redirectAttributes) {
+
+        itemValidator.validate(item, bindingResult);
+
+        //오류 시 바로 다시 지금 URL롤 새로고침처럼 제자리 이동
         if (bindingResult.hasErrors()) {
             log.info("errors={}", bindingResult);
             return "validation/v2/addForm";
