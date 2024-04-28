@@ -2,6 +2,7 @@ package itemservice.web;
 
 import itemservice.domain.member.Member;
 import itemservice.domain.member.MemberRepository;
+import itemservice.web.arumentresolver.Login;
 import itemservice.web.session.SessionManager;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -77,8 +78,21 @@ public class HomeController {
         return "loginHome";
     }
 
-    @GetMapping("/")
+   // @GetMapping("/")
     public String homeLoginV3Spring(@SessionAttribute(name=SessionConst.LOGIN_MEMBER,required=false)Member loginMember , Model model) {
+
+        //세션 관라자에 저장된 회원 정보 조회
+
+        //로그인
+        if (loginMember == null) {
+            return "home";
+        }
+        model.addAttribute("member", loginMember);
+        return "loginHome";
+    }
+
+    @GetMapping("/")
+    public String homeLoginV3ArgumentResolver(@Login Member loginMember, Model model) {
 
         //세션 관라자에 저장된 회원 정보 조회
 
