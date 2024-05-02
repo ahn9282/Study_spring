@@ -6,9 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import javax.sql.DataSource;
-import javax.xml.crypto.Data;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 
 import static hello.jdbc.connection.ConnectionConst.*;
