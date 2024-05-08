@@ -32,11 +32,11 @@ public class ValidationV2Controller {
     private final ItemRepository itemRepository;
     private final ItemValidator itemValidator;
 
-    @InitBinder
-    public void init(WebDataBinder dataBinder){
-        dataBinder.addValidators(itemValidator);
-
-    }
+//    @InitBinder
+//    public void init(WebDataBinder dataBinder){
+//        dataBinder.addValidators(itemValidator);
+//
+//    }
 
 
     @ModelAttribute("regions")
@@ -242,7 +242,7 @@ public class ValidationV2Controller {
     public String addItemV5(@ModelAttribute Item item, BindingResult bindingResult,
                             RedirectAttributes redirectAttributes) {
 
-        itemValidator.validate(item, bindingResult);
+       // itemValidator.validate(item, bindingResult);
 
         //오류 시 바로 다시 지금 URL롤 새로고침처럼 제자리 이동
         if (bindingResult.hasErrors()) {
