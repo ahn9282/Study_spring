@@ -1,2 +1,13 @@
-package study.ajs_1.loginstudy;public class HomeController {
+package study.ajs_1.loginstudy;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class HomeController {
+
+    @GetMapping("/")
+    public String home(){
+        return "home";
+    }
 }

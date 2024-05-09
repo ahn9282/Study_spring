@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="dc032c4c-1814-47c7-b3fb-48da555ca20e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../ajs_1/src/main/java/study/ajs_1/loginstudy/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ajs_1/src/main/java/study/ajs_1/loginstudy/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ajs_1/src/main/java/study/ajs_1/loginstudy/domain/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ajs_1/src/main/java/study/ajs_1/loginstudy/domain/Member.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ajs_1/src/main/java/study/ajs_1/loginstudy/domain/MemberRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ajs_1/src/main/java/study/ajs_1/loginstudy/domain/MemberRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ajs_1/src/main/java/study/ajs_1/loginstudy/web/MemberController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ajs_1/src/main/java/study/ajs_1/loginstudy/web/MemberController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ajs_1/src/main/resources/ValidationMessages.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../ajs_1/src/main/resources/ValidationMessages.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ajs_1/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../ajs_1/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ajs_1/src/main/resources/errors.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../ajs_1/src/main/resources/errors.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ajs_1/src/main/resources/messages.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../ajs_1/src/main/resources/messages.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ajs_1/src/main/resources/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/../ajs_1/src/main/resources/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ajs_1/src/main/resources/templates/members/addMemberForm.html" beforeDir="false" afterPath="$PROJECT_DIR$/../ajs_1/src/main/resources/templates/members/addMemberForm.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hello/itemservice/Dbstudy2Application.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/hello/itemservice/Dbstudy2ApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db-start/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db-start/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db-start/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db-start/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db-start/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db-start/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db-start/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db-start/sql/schema.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db-start/src/main/java/hello/itemservice/ItemServiceApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db-start/src/main/java/hello/itemservice/TestDataInit.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db-start/src/main/java/hello/itemservice/config/MemoryConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db-start/src/main/java/hello/itemservice/domain/Item.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db-start/src/main/java/hello/itemservice/repository/ItemRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db-start/src/main/java/hello/itemservice/repository/ItemSearchCond.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db-start/src/main/java/hello/itemservice/repository/ItemUpdateDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db-start/src/main/java/hello/itemservice/repository/memory/MemoryItemRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db-start/src/main/java/hello/itemservice/service/ItemService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db-start/src/main/java/hello/itemservice/service/ItemServiceV1.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db-start/src/main/java/hello/itemservice/web/HomeController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db-start/src/main/java/hello/itemservice/web/ItemController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db-start/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db-start/src/main/resources/static/css/bootstrap.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db-start/src/main/resources/static/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db-start/src/main/resources/templates/addForm.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db-start/src/main/resources/templates/css/bootstrap.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db-start/src/main/resources/templates/editForm.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db-start/src/main/resources/templates/item.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db-start/src/main/resources/templates/items.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db-start/src/test/java/hello/itemservice/ItemServiceApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db-start/src/test/java/hello/itemservice/domain/ItemRepositoryTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db-start/src/test/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db/sql/schema.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db/src/main/generated/hello/itemservice/domain/QItem.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db/src/main/java/hello/itemservice/ItemServiceApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db/src/main/java/hello/itemservice/TestDataInit.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db/src/main/java/hello/itemservice/config/JdbcTemplateV1Config.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db/src/main/java/hello/itemservice/config/JdbcTemplateV2Config.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db/src/main/java/hello/itemservice/config/JdbcTemplateV3Config.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db/src/main/java/hello/itemservice/config/JpaConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db/src/main/java/hello/itemservice/config/MemoryConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db/src/main/java/hello/itemservice/config/MyBatisConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db/src/main/java/hello/itemservice/config/QuerydslConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db/src/main/java/hello/itemservice/config/SpringDataJpaConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db/src/main/java/hello/itemservice/config/V2Config.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db/src/main/java/hello/itemservice/domain/Item.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db/src/main/java/hello/itemservice/repository/ItemRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db/src/main/java/hello/itemservice/repository/ItemSearchCond.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db/src/main/java/hello/itemservice/repository/ItemUpdateDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db/src/main/java/hello/itemservice/repository/jdbctemplate/JdbcTemplateItemRepositoryV1.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db/src/main/java/hello/itemservice/repository/jdbctemplate/JdbcTemplateItemRepositoryV2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db/src/main/java/hello/itemservice/repository/jdbctemplate/JdbcTemplateItemRepositoryV3.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db/src/main/java/hello/itemservice/repository/jpa/JpaItemRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db/src/main/java/hello/itemservice/repository/jpa/JpaItemRepositoryV2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db/src/main/java/hello/itemservice/repository/jpa/JpaItemRepositoryV3.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db/src/main/java/hello/itemservice/repository/jpa/SpringDataJpaItemRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db/src/main/java/hello/itemservice/repository/memory/MemoryItemRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db/src/main/java/hello/itemservice/repository/mybatis/ItemMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db/src/main/java/hello/itemservice/repository/mybatis/MyBatisItemRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db/src/main/java/hello/itemservice/repository/v2/ItemQueryRepositoryV2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db/src/main/java/hello/itemservice/repository/v2/ItemRepositoryV2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db/src/main/java/hello/itemservice/service/ItemService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db/src/main/java/hello/itemservice/service/ItemServiceV1.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db/src/main/java/hello/itemservice/service/ItemServiceV2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db/src/main/java/hello/itemservice/web/HomeController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db/src/main/java/hello/itemservice/web/ItemController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db/src/main/resources/hello/itemservice/repository/mybatis/ItemMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db/src/main/resources/static/css/bootstrap.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db/src/main/resources/static/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db/src/main/resources/templates/addForm.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db/src/main/resources/templates/css/bootstrap.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db/src/main/resources/templates/editForm.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db/src/main/resources/templates/item.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db/src/main/resources/templates/items.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db/src/test/java/hello/itemservice/ItemServiceApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db/src/test/java/hello/itemservice/domain/ItemRepositoryTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db/src/test/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/itemservice-db/src/test/resources/schema.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/springtx/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/springtx/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/springtx/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/springtx/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/springtx/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/springtx/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/springtx/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/springtx/src/main/java/hello/springtx/SpringtxApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/springtx/src/main/java/hello/springtx/order/NotEnoughMoneyException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/springtx/src/main/java/hello/springtx/order/Order.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/springtx/src/main/java/hello/springtx/order/OrderRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/springtx/src/main/java/hello/springtx/order/OrderService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/springtx/src/main/java/hello/springtx/propagation/Log.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/springtx/src/main/java/hello/springtx/propagation/LogRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/springtx/src/main/java/hello/springtx/propagation/Member.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/springtx/src/main/java/hello/springtx/propagation/MemberRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/springtx/src/main/java/hello/springtx/propagation/MemberService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/springtx/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/springtx/src/test/java/hello/springtx/SpringtxApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/springtx/src/test/java/hello/springtx/apply/InitTxTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/springtx/src/test/java/hello/springtx/apply/InternalCallV1Test.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/springtx/src/test/java/hello/springtx/apply/InternalCallV2Test.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/springtx/src/test/java/hello/springtx/apply/TxBasicTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/springtx/src/test/java/hello/springtx/apply/TxLevelTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/springtx/src/test/java/hello/springtx/exception/RollbackTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/springtx/src/test/java/hello/springtx/order/OrderServiceTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/springtx/src/test/java/hello/springtx/propagation/BasicTxTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../source-DB-2-spring/springtx/src/test/java/hello/springtx/propagation/MemberServiceTest.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="itemservice" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;ahn9282&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/ahn9282/Study_spring.git&quot;,
+    &quot;accountId&quot;: &quot;c385d44f-df7c-4510-9cd1-d8bdb3f89803&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="2gE93vW4SwTj5RlFslKKPRfYO0F" />
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/studyMy/springstudy-DB-2/build.gradle",
+    "settings.editor.selected.configurable": "reference.projectsettings.compiler.annotationProcessors"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="dc032c4c-1814-47c7-b3fb-48da555ca20e" name="Changes" comment="" />
+      <created>1715251673836</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1715251673836</updated>
+    </task>
+    <servers />
+  </component>
+</project>
