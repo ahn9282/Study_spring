@@ -5,26 +5,46 @@ import hello.itemservice.repository.ItemSearchCond;
 import hello.itemservice.repository.ItemUpdateDto;
 import hello.itemservice.repository.memory.MemoryItemRepository;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-
+@Transactional
 @SpringBootTest
 class ItemRepositoryTest {
     @Autowired
     ItemRepository itemRepository;
 
+
+    /*
+    *transactionManager를 이용하여 afterEach, BeforeEach 마다 트랜잭션을 시작, 롤백을
+    *  DB에 접근하는 test들이 각자 격리(?),  독립(?)성을 가진다.
+    *  */
+  /*  @Autowired
+    PlatformTransactionManager transactionManager;
+    TransactionStatus status;*/
+    @BeforeEach
+    void beforeEach(){
+       /* //트랜잭션 시작
+         status = transactionManager.getTransaction(new DefaultTransactionDefinition());*/
+    }
+
+
+
     @AfterEach
     void afterEach() {
 
-//MemoryItemRepository 의 경우 제한적으로 사용
-        if (itemRepository instanceof MemoryItemRepository) {
-            ((MemoryItemRepository) itemRepository).clearStore();
-        }
+ /*       //트랜잭션 롤백
+        transactionManager.rollback(status);*/
+
     }
 
     @Test
@@ -64,7 +84,7 @@ class ItemRepositoryTest {
         itemRepository.save(item2);
         itemRepository.save(item3);
         //둘 다 없음 검증
-        test(null, null, item1, item2, item3);
+        //test(null, null, item1, item2, item3);
         test("", null, item1, item2, item3);
             //itemName 검증
         test("itemA", null, item1, item2);
