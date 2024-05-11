@@ -15,7 +15,7 @@ import java.util.List;
 @RestController
 public class ShortenUrlRestController {
 
-    private SimpleShortenUrlService simpleShortenUrlService;
+    private final SimpleShortenUrlService simpleShortenUrlService;
 
     @Autowired
     ShortenUrlRestController(SimpleShortenUrlService simpleShortenUrlService) {
