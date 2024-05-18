@@ -26,13 +26,14 @@ public class SecurityConfiguration {
                        .passwordParameter("password")//password 파라미터 이름 설정
                        .defaultSuccessUrl("/",true));
                         //성공시 위 url로 기본적 리다이렉트
-        
+
         http.authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/user/**").hasRole("user")
 
                         .requestMatchers("/login").permitAll()
 
                         .requestMatchers("/security-test/**").permitAll()
+                        .requestMatchers("/register").permitAll()
                         .anyRequest().authenticated()
                 )
                 .httpBasic(Customizer.withDefaults());
@@ -52,6 +53,7 @@ public class SecurityConfiguration {
                 }))//로그 아웃 성공 핸들러
                 .deleteCookies("JSESSIONID"));
                 //로그아웃 후 쿠키 JSESSIONID 삭제
+
 
         return http.build();
     }

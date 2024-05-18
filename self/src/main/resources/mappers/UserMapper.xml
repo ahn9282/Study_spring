@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="spring.study.self.security.UserMapper">
+
+    <insert id="save" parameterType="UserDto">
+        INSERT INTO member (username, password)
+        values (#{username}, #{password})
+
+    </insert>
+    <insert id="saveAuthority" parameterType="UserDto">
+        INSERT INTO authority (username, auth) VALUES ( #{username}, 'role_user')
+    </insert>
+    <select id="findByUsername" parameterType="String" resultType="UserDto">
+        select id, username
+        from item
+        where username = #{username}
+    </select>
+
+</mapper>
