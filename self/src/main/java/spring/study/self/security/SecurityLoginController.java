@@ -1,27 +1,51 @@
 package spring.study.self.security;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.UrlResource;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @Slf4j
 @MapperScan
+@RequiredArgsConstructor
 public class SecurityLoginController {
     @Autowired
     MemberService memberService;
+    @Autowired
+    UserService userService;
+    @Autowired
+    private AuthenticationManager authenticationManager;
 
-    @RequestMapping("/login")
+    @GetMapping("/login")
     public String loginForm(){
+
         return "/security/login";
     }
+
+    @PostMapping("/login") // POST 요청을 처리하도록 변경
+    public String loginForm(@RequestParam("username") String username,
+                            @RequestParam("password") String password) {
+        try {
+            UserDetails userDetails = userService.loadUserByUsername(username);
+            UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(userDetails, password);
+            authenticationManager.authenticate(token);
+            SecurityContextHolder.getContext().setAuthentication(token);
+            return "redirect:/";
+        } catch (AuthenticationException e) {
+            return "redirect:/login?error";
+        }
+    }
+
     @RequestMapping("/logout")
     public String logOutForm(){
         return "/";
