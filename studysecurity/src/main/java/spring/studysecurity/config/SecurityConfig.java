@@ -46,7 +46,25 @@ public class SecurityConfig {
                         }).logoutSuccessHandler(((request, response, authentication) -> {
                             response.sendRedirect("/login");// 로그아웃 성공 시 리다이렉트
                         }))//로그 아웃 성공 핸들러
-                        .deleteCookies("JSESSIONID"));
+                        .deleteCookies("JSESSIONID"))
+                
+                //중복 로그인 설정
+                .sessionManagement((auth) -> auth
+                        //최대 로그인 수 설정 다중 로그인 허용 개수 1개
+                        .maximumSessions(1)
+                        //다중 로그인 개수 초과 시 설정
+                        //true :  초과 시 새로운 로그인 차단
+                        //false : 초과 시 기존 세션 하나 삭제
+                        .maxSessionsPreventsLogin(true))
+
+                //세션 고정 공격 보호 설정
+                .sessionManagement((auth) -> auth
+                        //로그인 시 세션 정보 변경 X
+                        //.sessionFixation().none()
+                        //로그인 시 세션 새로 생성
+                       // .sessionFixation().newSession()
+                        // 로그인 시 동일한 세션에 대한 id 변경
+                        .sessionFixation().changeSessionId());
 
         return http.build();
     }
