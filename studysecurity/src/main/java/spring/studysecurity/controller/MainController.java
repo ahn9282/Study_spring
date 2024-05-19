@@ -1,6 +1,7 @@
 package spring.studysecurity.controller;
 
 import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -14,11 +15,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.Collection;
 import java.util.Iterator;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+
 @Controller
 @Slf4j
 public class MainController {
 
     @GetMapping("/")
+
     public String mainP( Model model){
        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         //SecurityContextHolder -> SecurityContext 에서 Authentication 객체를 가져옴
@@ -39,4 +45,9 @@ public class MainController {
     public String logOutForm(){
         return "redirect:/login";
     }
+
+    public String mainP(){
+        return "main";
+    }
+
 }
