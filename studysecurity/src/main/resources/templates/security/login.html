@@ -7,7 +7,7 @@
 <body>
 <div>
     <h2>Login Page</h2>
-    <form th:action="@{/login}" method="post">
+    <form th:action="@{/loginProc}" method="post">
         <div>
             <label for="username">Username:</label>
             <input type="text" id="username" name="username"/>
@@ -20,7 +20,7 @@
             <button type="submit">Login</button>
         </div>
     </form>
-    <a href="/register?" class="button" >회원 가입</a>
+    <a href="/join" class="button" >회원 가입</a>
     <div th:if="${param.error}">
         <p>Invalid username or password</p>
     </div>

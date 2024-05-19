@@ -15,20 +15,22 @@ public class UserDetailDto implements UserDetails {
     private int id;
     private String username;
     private String password;
+    private boolean enabled;
     private List<GrantedAuthority> authorities;
 
 
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return this.authorities;
+        return authorities;
     }
 
     public UserDetailDto(UserDto userDto){
         this.setId(userDto.getId());
         this.setUsername(userDto.getUsername());
         this.setPassword(userDto.getPassword());
-        this.setAuthorities((List<GrantedAuthority>) userDto);
+        this.setEnabled(userDto.isEnabled());
+        this.setAuthorities(userDto.getAuthorities());
 
     }
     @Override
@@ -46,7 +48,7 @@ public class UserDetailDto implements UserDetails {
         //계정이 만료되었는지에 대한 여부
         //true : 만료 X
         //false : 만료 O
-        return false;
+        return true;
     }
 
     @Override
@@ -54,7 +56,7 @@ public class UserDetailDto implements UserDetails {
         //계정이 잠겼는지에 대한 여부
         //true : 잠김 X
         //false : 잠김 O
-        return false;
+        return true;
     }
 
     @Override
@@ -62,7 +64,7 @@ public class UserDetailDto implements UserDetails {
         //패스워드가 만료 되었는지에 대한 여부
         //true : 만료 X
         //false : 만료 O
-        return false;
+        return true;
     }
 
     @Override
@@ -70,6 +72,7 @@ public class UserDetailDto implements UserDetails {
         //계정이 활성화 되었는지에 대한 여부
         //true : 활성화
         //false : 비활성화
-        return false;
+        return enabled;
     }
+
 }

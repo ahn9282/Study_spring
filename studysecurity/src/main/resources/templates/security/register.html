@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입</title>
+</head>
+<body>
+<h1>회원가입</h1>
+<form th:action="@{/joinProc}" th:object="${joinDTO}" method="post">
+    <div>
+        <label for="username">Username:</label>
+        <input type="text" id="username" th:field="*{username}" />
+    </div>
+    <div style="margin-top: 10px;">
+        <label for="password">Password:</label>
+        <input type="password" id="password" th:field="*{password}" />
+    </div>
+    <div style="margin-top: 10px;">
+        <button type="submit">Register</button>
+    </div>
+</form>
+<div th:if="${param.success}">
+    <p>회원가입이 완료되었습니다!</p>
+</div>
+</body>
+</html>
