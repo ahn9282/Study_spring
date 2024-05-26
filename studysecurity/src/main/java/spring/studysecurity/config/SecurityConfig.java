@@ -31,11 +31,11 @@ public class SecurityConfig {
                         .requestMatchers("/admin").hasAnyRole("ADMIN")
                         .anyRequest().authenticated()
                 )
-//                .formLogin((auth) -> auth
-//                        .loginPage("/login")
-//                        .loginProcessingUrl("/loginProc")//로그인 처리 url
-//                        .permitAll() )
-                .httpBasic(Customizer.withDefaults())
+                .formLogin((auth) -> auth
+                        .loginPage("/login")
+                        .loginProcessingUrl("/loginProc")//로그인 처리 url
+                      .permitAll() )
+                //.httpBasic(Customizer.withDefaults())
                 //http basic 방식의 로그인 form 태그로 로그인하는 방식이 아님
 
                 .logout(logout -> logout
