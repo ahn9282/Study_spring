@@ -1,5 +1,6 @@
 package self.study.jwt.config;
 
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,9 +13,13 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
 import self.study.jwt.jwt.JWTUtil;
 import self.study.jwt.jwt.JwtFilter;
 import self.study.jwt.jwt.LoginFilter;
+
+import java.util.Collections;
 
 @Configuration
 @EnableWebSecurity
@@ -33,7 +38,7 @@ public class SecurityConfig {
     //Authentication Bean 등록
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception {
-        return  configuration.getAuthenticationManager();
+        return configuration.getAuthenticationManager();
     }
 
     @Bean
@@ -71,6 +76,33 @@ public class SecurityConfig {
                 .sessionManagement((session) -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
+        //cors설정
+        http
+                .cors(cors -> cors
+                        .configurationSource(new CorsConfigurationSource() {
+                            @Override
+                            public CorsConfiguration getCorsConfiguration(HttpServletRequest request) {
+
+                                CorsConfiguration corsConfiguration = new CorsConfiguration();
+                                //프론트 엔드단 포트 번호 cors 적용 설정
+                                corsConfiguration.setAllowedOrigins(Collections.singletonList("http://localgost:3000"));
+                                //http 메서드 허용 설정
+                                corsConfiguration.setAllowedMethods(Collections.singletonList("*"));
+                                //
+                                corsConfiguration.setAllowCredentials(true);
+                                //허용할 header 설정
+                                corsConfiguration.setAllowedHeaders(Collections.singletonList("*"));
+                                corsConfiguration.setMaxAge(3600L);
+
+                                //Authorization header에 jwt토큰을 보내기 때문에 header를 허용 설정
+                                corsConfiguration.setExposedHeaders(Collections.singletonList("Authorization"));
+
+                                return corsConfiguration;
+                            }
+                        }));
+
         return http.build();
     }
+
+
 }
