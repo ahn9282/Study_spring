@@ -8,8 +8,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class AdminController {
 
-    @GetMapping("")
+    @GetMapping("/admin")
     public String adminPage(){
+
         return "admin Controller";
     }
 }

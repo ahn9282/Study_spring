@@ -13,6 +13,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import self.study.jwt.jwt.JWTUtil;
+import self.study.jwt.jwt.JwtFilter;
 import self.study.jwt.jwt.LoginFilter;
 
 @Configuration
@@ -59,14 +60,16 @@ public class SecurityConfig {
                         .requestMatchers("/admin").hasRole("ADMIN")
                         .anyRequest().authenticated());
 
-        http
-                .sessionManagement((session) -> session
-                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS));
+        http.addFilterBefore(new JwtFilter(jwtUtil), LoginFilter.class);
 
-        http        //필터에는 인자를 필요로함 이는 위에 추가하였음 
+
+        http        //필터에는 인자를 필요로함 이는 위에 추가하였음
                 //AuthenticationManager라는 객체를 인자로 받음
                 // + JWTUtil 주입
                 .addFilterAt(new LoginFilter(authenticationManager(configuration), jwtUtil), UsernamePasswordAuthenticationFilter.class);
+        http
+                .sessionManagement((session) -> session
+                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
         return http.build();
     }
