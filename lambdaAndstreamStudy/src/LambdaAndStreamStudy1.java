@@ -8,7 +8,7 @@ public class LambdaAndStreamStudy1 {
     @FunctionalInterface
     interface Addable{
         int add(int num1, int num2);
-    }
+    } 
     public static void main(String[] args) {
         Printable2 pt2 = (String s) -> System.out.println("프린트합니다33" + s);
         pt2.print("sd");
