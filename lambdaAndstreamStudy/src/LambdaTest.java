@@ -17,7 +17,13 @@ class SPrintable implements Printable {
         System.out.println("안녕~");
     }
 }
+//함수 하나가 온다
+//
+@FunctionalInterface
+interface Printable2{
+    void print(String s);
 
+}
 public class LambdaTest {
     public static void main(String[] args) {
         System.out.println("hello world!!");
@@ -34,6 +40,10 @@ public class LambdaTest {
             }
         };
 
+        Printable2 pt2 = (String s) -> {
+            System.out.println("프린트합니다33" + s);
+        };
+pt2.print("sd");
 
         printable.print();
 
@@ -51,18 +61,18 @@ public class LambdaTest {
             list.add(i);
         }
         for (Integer i : list) {
-            System.out.println("i = " + i);
+            System.out.print("i = " + i+" \t");
         }
 
          list.stream()
                 .filter(e -> e % 2 == 0)
-                .forEach(e -> System.out.println(e+" \t"));
+                .forEach(e -> System.out.print(e+" \t"));
 
         List<Integer> list2 = list.stream()
                 .filter(e -> e%2 ==1)
                 .collect(Collectors.toUnmodifiableList());
         for (Integer i : list2) {
-            System.out.println("i = " + i);
+            System.out.print("i = " + i+" \t");
         }
 
     }
