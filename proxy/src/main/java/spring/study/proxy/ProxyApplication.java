@@ -8,11 +8,12 @@ import spring.study.proxy.config.AppV1Config;
 import spring.study.proxy.config.AppV2Config;
 import spring.study.proxy.config.v1_proxy.ConcreteProxyConfig;
 import spring.study.proxy.config.v1_proxy.InterfaceProxyConfig;
+import spring.study.proxy.config.v2_dynamicproxy.DynamicProxyBasicConfig;
 import spring.study.proxy.trace.logtrace.LogTrace;
 import spring.study.proxy.trace.logtrace.ThreadLocalLogTrace;
 
 //@Import(AppV1Config.class)
-@Import({ ConcreteProxyConfig.class,InterfaceProxyConfig.class})
+@Import({ ConcreteProxyConfig.class, DynamicProxyBasicConfig.class})
 @SpringBootApplication(scanBasePackages = "spring.study.proxy.app")
 public class ProxyApplication {
 
