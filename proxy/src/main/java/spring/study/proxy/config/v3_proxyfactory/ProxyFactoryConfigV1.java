@@ -1,4 +1,4 @@
-package spring.study.proxy.config;
+package spring.study.proxy.config.v3_proxyfactory;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.aop.Advisor;
@@ -15,6 +15,18 @@ import spring.study.proxy.trace.logtrace.LogTrace;
 @Configuration
 public class ProxyFactoryConfigV1 {
 
+
+    @Bean
+    public OrderControllerV1 orderControllerV1(LogTrace logTrace) {
+        OrderControllerV1 orderController = new OrderControllerV1Impl(orderServiceV1( logTrace));
+        ProxyFactory factory = new ProxyFactory(orderController);
+        factory.addAdvisor(getAdvisor(logTrace));
+
+        OrderControllerV1 proxy = (OrderControllerV1) factory.getProxy();
+        log.info("proxy Factory proxy = {}, target ={} ", proxy.getClass(), orderController.getClass());
+
+        return proxy;
+    }
 
 
     @Bean

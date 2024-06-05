@@ -1,6 +1,8 @@
 package spring.study.proxy.app.v2;
 
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class OrderRepositoryV2 {
     public void save(String itemId) {
 //저장 로직
