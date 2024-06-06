@@ -1,14 +1,19 @@
 package hello.itemservice.domain;
 
+import hello.itemservice.config.SpringDataJpaConfig;
 import hello.itemservice.repository.ItemRepository;
 import hello.itemservice.repository.ItemSearchCond;
 import hello.itemservice.repository.ItemUpdateDto;
 import hello.itemservice.repository.memory.MemoryItemRepository;
+import jakarta.persistence.TypedQuery;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Import;
+import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,9 +22,10 @@ import org.springframework.transaction.support.DefaultTransactionDefinition;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+@Slf4j
 @Transactional
 @SpringBootTest
-class ItemRepositoryTest {
+ class ItemRepositoryTest {
     @Autowired
     ItemRepository itemRepository;
 
@@ -36,7 +42,6 @@ class ItemRepositoryTest {
        /* //트랜잭션 시작
          status = transactionManager.getTransaction(new DefaultTransactionDefinition());*/
     }
-
 
 
     @AfterEach
@@ -61,11 +66,11 @@ class ItemRepositoryTest {
     @Test
     void updateItem() {
             //given
-        Item item = new Item("item1", 10000, 10);
+        Item item = new Item("itemT1", 15000, 17);
         Item savedItem = itemRepository.save(item);
         Long itemId = savedItem.getId();
             //when
-        ItemUpdateDto updateParam = new ItemUpdateDto("item2", 20000, 30);
+        ItemUpdateDto updateParam = new ItemUpdateDto("itemT2", 25000, 37);
         itemRepository.update(itemId, updateParam);
             //then
         Item findItem = itemRepository.findById(itemId).get();
@@ -80,6 +85,8 @@ class ItemRepositoryTest {
         Item item1 = new Item("itemA-1", 10000, 10);
         Item item2 = new Item("itemA-2", 20000, 20);
         Item item3 = new Item("itemB-1", 30000, 30);
+
+        log.info("repository = {}", itemRepository.getClass());
         itemRepository.save(item1);
         itemRepository.save(item2);
         itemRepository.save(item3);
@@ -88,7 +95,7 @@ class ItemRepositoryTest {
         test("", null, item1, item2, item3);
             //itemName 검증
         test("itemA", null, item1, item2);
-        test("temA", null, item1, item2);
+        test("itemA", null, item1, item2);
         test("itemB", null, item3);
         //maxPrice 검증
         test(null, 10000, item1);
