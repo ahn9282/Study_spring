@@ -1,4 +1,4 @@
-package study.jpa.basic.jpabook;
+package study.jpa.start.jpamain.jpabook;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;

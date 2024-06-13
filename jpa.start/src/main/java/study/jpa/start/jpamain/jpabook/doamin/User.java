@@ -1,4 +1,4 @@
-package study.jpa.basic.jpabook.doamin;
+package study.jpa.start.jpamain.jpabook.doamin;
 
 import jakarta.persistence.*;
 import lombok.Getter;
