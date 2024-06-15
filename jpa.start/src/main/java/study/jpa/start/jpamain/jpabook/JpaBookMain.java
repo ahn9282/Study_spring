@@ -5,13 +5,15 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
 import study.jpa.start.jpamain.Member;
+import study.jpa.start.jpamain.jpabook.doamin.Order;
+import study.jpa.start.jpamain.jpabook.doamin.OrderItem;
 import study.jpa.start.jpamain.jpabook.doamin.Team;
 import study.jpa.start.jpamain.jpabook.doamin.User;
 
 import java.util.List;
 
 public class JpaBookMain {
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("hello");
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
@@ -33,6 +35,14 @@ public class JpaBookMain {
 
             team3.addMember(member3);
 
+            Order order = new Order();
+            em.persist(order);
+
+            OrderItem orderItem = new OrderItem();
+            orderItem.setOrder(order);
+
+            em.persist(orderItem);
+
              em.flush();
             em.clear();
 
@@ -49,6 +59,7 @@ public class JpaBookMain {
 //                System.out.println("user = " + user.getId()+" "+ user.getName()+" "+ user.getTeam().getId() +" " + user.getTeam().getName());
 //            }
 
+
             tx.commit();
 
         } catch (Exception e) {
@@ -56,5 +67,5 @@ public class JpaBookMain {
         }
         em.close();
         emf.close();
-    }
+    }*/
 }
