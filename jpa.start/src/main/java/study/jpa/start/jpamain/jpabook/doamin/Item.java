@@ -25,10 +25,10 @@ public abstract class Item {
 
 
 
-    @OneToMany(mappedBy = "item")
+    @OneToMany(mappedBy = "item",cascade = CascadeType.ALL)
     private List<OrderItem> orderItemList = new ArrayList<>();
 
-    @ManyToMany(mappedBy = "items")
+    @ManyToMany(mappedBy = "items",cascade = CascadeType.ALL)
     private List<Category> categories = new ArrayList<>();
 
 }

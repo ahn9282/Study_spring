@@ -18,7 +18,7 @@ public class Product extends BaseEntity{
 
     private String name;
 
-    @OneToMany(mappedBy = "product")
+    @OneToMany(mappedBy = "product",cascade = CascadeType.ALL)
     private List<MemberProduct> memberProducts = new ArrayList<>();
 
 

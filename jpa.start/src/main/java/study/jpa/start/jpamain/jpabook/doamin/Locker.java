@@ -1,9 +1,6 @@
 package study.jpa.start.jpamain.jpabook.doamin;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 
 @Entity
 public class Locker {
@@ -14,8 +11,8 @@ public class Locker {
 
     private String name;
 
-    @OneToOne(mappedBy = "locker")
-    private User member;
+   @OneToOne(mappedBy = "locker",cascade = CascadeType.ALL)
+   private User member;
 
 
 }
