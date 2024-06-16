@@ -1,11 +1,13 @@
 package study.jpa.start.jpamain.jpabook.doamin;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static jakarta.persistence.FetchType.*;
 
 @Getter
 @Setter
@@ -17,4 +19,13 @@ public class Parent {
     private Long id;
 
     private String name;
+
+    //CascadeType.ALL 일 경우 해당 parent Entity 여부에 따라 같이 적용된다.
+    @OneToMany(mappedBy = "parent",fetch = LAZY)
+    private List<Child> childList = new ArrayList<>();
+
+    public void addChild(Child child) {
+        childList.add(child);
+        child.setParent(this);
+    }
 }
