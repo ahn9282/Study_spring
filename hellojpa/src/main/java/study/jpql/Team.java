@@ -15,6 +15,7 @@ public class Team {
 
     private String name;
 
+    @OneToMany(mappedBy = "team")
     public List<Member> getMembers() {
         return members;
     }
