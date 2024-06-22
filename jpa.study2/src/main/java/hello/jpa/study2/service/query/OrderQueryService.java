@@ -17,7 +17,7 @@ public class OrderQueryService {
     private final OrderRepository orderRepository;
 
     public List<OrderApiController.OrderDto> ordersV3() {
-        return orderRepository.findAllWithItem().stream()
+        return orderRepository.findAllWithMemberDelivery().stream()
                 .map(OrderApiController.OrderDto::new)
                 .collect(toList());
     }

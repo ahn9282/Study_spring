@@ -63,9 +63,10 @@ public class OrderApiController {
     //ToOne 관계는 fetchJoin 으로 페이징,
     // ToMany 관계는 batch를 통해 추가적인 일괄 추가 쿼리로 페이징하는 방식
     @GetMapping("/api/v3.1/orders")
+    @Transactional
     public List<OrderDto> ordersV3_page(@RequestParam(value="offset", defaultValue="0") int offset,
                                         @RequestParam(value="limit", defaultValue="10") int limit) {
-        return  orderRepository.findAllWithMemberDelivery(offset,limit ).stream()
+        return  orderRepository.findAllWithMemberDelivery(offset, limit ).stream()
                 .map(OrderDto::new)
                 .collect(toList());
     }
