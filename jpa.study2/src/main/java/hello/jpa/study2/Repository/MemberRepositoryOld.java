@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class MemberRepository {
+public class MemberRepositoryOld {
 
     @PersistenceContext
     private EntityManager em;
@@ -19,7 +19,7 @@ public class MemberRepository {
     }
 
     public Member findOne(Long id) {
-        //id 를 토대로 Member class의 Enitity반환
+        //id 를 토대로 Member class 의 Enitity 반환
         return em.find(Member.class, id);
     }
     public List<Member> findAll(){

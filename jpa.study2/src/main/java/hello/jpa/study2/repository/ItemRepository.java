@@ -14,11 +14,11 @@ public class ItemRepository {
     private final EntityManager em;
 
     public void save(Item item) {
-        if (item.getId() == null) {//처음 등록이기에 id 가 null임
+        if (item.getId() == null) {//처음 등록이기에 id 가 null 임
             em.persist(item);
         }else{//이미 존재하는 것을 save
             em.merge(item);
-            //merge는 병합으로 변경할 때 사용(수정)
+            //merge 는 병합으로 변경할 때 사용(수정)
         }
     }
 

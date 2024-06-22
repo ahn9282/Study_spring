@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 //@Transactional 필수인 JPA에서 조회하는 기능마다 이렇게 해주면 JPA가 조회의 경우 최적화기능 제공
@@ -40,12 +41,12 @@ public class MemberService {
     }
      //회원 한명 조회
     public Member findOne(Long memberId) {
-        return repository.findOne(memberId);
+        return repository.findById(memberId).get();
     }
 
     @Transactional
     public void update(Long id, String name) {
-        Member member = repository.findOne(id);
+        Member member = repository.findById(id).get();
         member.setName(name);
     }
 }
