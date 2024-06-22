@@ -1,6 +1,7 @@
 package hello.jpa.study2.repository;
 
 import hello.jpa.study2.domain.Order;
+import hello.jpa.study2.repository.OrderSearch;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import jakarta.persistence.criteria.*;
