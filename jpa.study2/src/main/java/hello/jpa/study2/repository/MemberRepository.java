@@ -19,7 +19,7 @@ public class MemberRepository {
     }
 
     public Member findOne(Long id) {
-        //id 를 토대로 Member class의 Enitity반환
+        //id 를 토대로 Member class 의 Enitity 반환
         return em.find(Member.class, id);
     }
     public List<Member> findAll(){
