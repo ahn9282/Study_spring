@@ -31,6 +31,8 @@ public class JwtFilter extends OncePerRequestFilter {
                                     HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 
         String authorization = request.getHeader("Authorization");
+        //request 객체를 통해 header - authorization key에서 값(value) 꺼냄
+
         if (authorization == null) {
             //토큰이 null 또는 "Authorization"이 아닌 것으로 시작할 경우 -> 검증 실패
             filterChain.doFilter(request, response);

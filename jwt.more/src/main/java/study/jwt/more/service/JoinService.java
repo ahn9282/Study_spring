@@ -10,8 +10,10 @@ import study.jwt.more.repository.UserRepository;
 
 @Service
 public class JoinService {
+
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+
     public JoinService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;

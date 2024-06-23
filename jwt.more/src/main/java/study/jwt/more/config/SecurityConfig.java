@@ -4,6 +4,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -17,6 +18,8 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import study.jwt.more.jwt.JwtFilter;
 import study.jwt.more.jwt.JwtUtil;
 import study.jwt.more.jwt.LoginFilter;
+import study.jwt.more.oauth2.CustomSuccessHandler;
+import study.jwt.more.service.CustomOAuth2UserService;
 
 import java.util.Collections;
 
@@ -27,21 +30,35 @@ public class SecurityConfig {
     private final JwtUtil jwtUtil;
     private final AuthenticationConfiguration configuration;
     //AuthenticationManager 에 주입할 AuthenticationConfiguration 주입
-    public SecurityConfig(JwtUtil jwtUtil, AuthenticationConfiguration configuration) {
+    private final CustomOAuth2UserService customOAuth2UserService;
+    private final CustomSuccessHandler customSuccessHandler;
+
+    public SecurityConfig(JwtUtil jwtUtil, AuthenticationConfiguration configuration, CustomOAuth2UserService customOAuth2UserService, CustomSuccessHandler customSuccessHandler) {
         this.jwtUtil = jwtUtil;
         this.configuration = configuration;
+        this.customOAuth2UserService = customOAuth2UserService;
+        this.customSuccessHandler = customSuccessHandler;
     }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .csrf((auth) -> auth.disable());
+
         http
-                .formLogin((auth) -> auth.disable());
+                .formLogin(auth -> auth.disable());
         http
                 .httpBasic((auth) -> auth.disable());
 
-        http    //cors : 교차 리소스 출처 방지 설정 막기 securityConfig 랑 WebMvcConfigurer 구현체로 두번 설정해야함
+        http
+                .oauth2Login(oauth2 -> oauth2
+                        .userInfoEndpoint(userInfoEndpointConfig -> userInfoEndpointConfig
+                                .userService(customOAuth2UserService))
+                        .successHandler(customSuccessHandler));//oauth2 로그인 커스텀 서비스 등록
+                            //oauth2 로그인 커스텀 successhandler 등록
+
+
+        http    //cors : 교차 리소스 공유  설정  securityConfig 랑 WebMvcConfigurer 구현체로 두번 설정해야함
                 .cors(cors -> cors
                         .configurationSource(new CorsConfigurationSource() {
                             @Override
@@ -66,9 +83,10 @@ public class SecurityConfig {
                         .requestMatchers("/admin").hasRole("ADMIN")
                         .anyRequest().authenticated());
 
-        http    //jwt 로 인해 새로 커스텀한 필터 추가 UsernamePasswordAuthenticationFilter의 위치로 설정
+    /*   OAuth2로 인한 로그인 방식이기에 Login Filtet가 따로 필요하질 않음
+       http    //jwt 로 인해 새로 커스텀한 필터 추가 UsernamePasswordAuthenticationFilter의 위치로 설정
                 .addFilterAt(new LoginFilter(authenticationManager(configuration),jwtUtil), UsernamePasswordAuthenticationFilter.class);
-                //기존 필터에서 교체 시 에는 addFilterAt사용
+                //기존 필터에서 교체 시 에는 addFilterAt사용*/
 
         http    //LoginFilter 실행 전으로 순서지정하여 이미 로그인 시 처리하여 로그인 필터로 반복 없앰
                 .addFilterBefore(new JwtFilter(jwtUtil), LoginFilter.class);

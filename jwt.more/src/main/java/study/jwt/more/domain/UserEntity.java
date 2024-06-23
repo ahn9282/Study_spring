@@ -9,6 +9,7 @@ import lombok.Setter;
 
 @Entity
 @Getter
+@Setter
 @Table(name = "User")
 public class UserEntity {
 
@@ -21,6 +22,15 @@ public class UserEntity {
     private String password;
 
     private String role;
+    private String name;
+    private String email;
+
+    public UserEntity(String username, String password, String role, String name) {
+        this.username = username;
+        this.password = password;
+        this.role = role;
+        this.name = name;
+    }
 
     public UserEntity(){
 
