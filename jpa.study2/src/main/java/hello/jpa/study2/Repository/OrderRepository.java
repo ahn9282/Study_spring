@@ -1,6 +1,7 @@
-package hello.jpa.study2.Repository;
+package hello.jpa.study2.repository;
 
 import hello.jpa.study2.domain.Order;
+import hello.jpa.study2.repository.OrderSearch;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import jakarta.persistence.criteria.*;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Repository
@@ -36,7 +38,7 @@ public class OrderRepository {
                 jpql += " where";
                 isFirstCondition = false;
             }else{
-                jpql += "and";
+                jpql += " and ";
             }
             jpql += " o.status = :status";
         }
@@ -75,7 +77,7 @@ public class OrderRepository {
 
         List<Predicate> criteria = new ArrayList<>();
         if (orderSearch.getOrderStatus() != null) {
-           Predicate status = cb.equal(o.get("status"), orderSearch.getOrderStatus());
+            Predicate status = cb.equal(o.get("status"), orderSearch.getOrderStatus());
             criteria.add(status);
         }
         if (StringUtils.hasText(orderSearch.getMemberName())) {
@@ -88,4 +90,22 @@ public class OrderRepository {
         return query.getResultList();
     }
 
+
+    public List<Order> findAllWithMemberDelivery() {
+        return em.createQuery(
+                        "select o from Order o" +
+                                " join fetch o.member m" +
+                                " join fetch o.delivery d", Order.class)
+                .getResultList();
+    }
+
+    public List<Order> findAllWithMemberDelivery(int offset, int limit) {
+        return em.createQuery(
+                        "select o from Order o" +
+                                " join fetch o.member m" +
+                                " join fetch o.delivery d", Order.class)
+                .setFirstResult(offset)
+                .setMaxResults(limit)
+                .getResultList();
+    }
 }
