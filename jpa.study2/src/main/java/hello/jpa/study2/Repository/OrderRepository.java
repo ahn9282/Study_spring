@@ -1,7 +1,11 @@
 package hello.jpa.study2.repository;
 
+import com.querydsl.core.types.dsl.BooleanExpression;
+import com.querydsl.jpa.impl.JPAQueryFactory;
 import hello.jpa.study2.domain.Order;
-import hello.jpa.study2.repository.OrderSearch;
+import hello.jpa.study2.domain.OrderStatus;
+import hello.jpa.study2.domain.QMember;
+import hello.jpa.study2.domain.QOrder;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import jakarta.persistence.criteria.*;
@@ -10,14 +14,18 @@ import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Repository
-@RequiredArgsConstructor
 public class OrderRepository {
 
     private final EntityManager em;
+    private final JPAQueryFactory query;
+
+    public OrderRepository(EntityManager em) {
+        this.em = em;
+        this.query = new JPAQueryFactory(em);
+    }
 
     public void save(Order order) {
         em.persist(order);
@@ -37,7 +45,7 @@ public class OrderRepository {
             if (isFirstCondition) {
                 jpql += " where";
                 isFirstCondition = false;
-            }else{
+            } else {
                 jpql += " and ";
             }
             jpql += " o.status = :status";
@@ -48,7 +56,7 @@ public class OrderRepository {
             if (isFirstCondition) {
                 jpql += " where";
                 isFirstCondition = false;
-            }else{
+            } else {
                 jpql += " and";
             }
             jpql += "m.name like :name";
@@ -90,6 +98,34 @@ public class OrderRepository {
         return query.getResultList();
     }
 
+    public List<Order> findAllOrderSearch(OrderSearch orderSearch) {
+        QOrder order = QOrder.order;
+        QMember member = QMember.member;
+
+
+        JPAQueryFactory query = new JPAQueryFactory(em);
+        return query
+                .select(order)
+                .from(order)
+                .join(order.member, member)
+                .where(statusEq(orderSearch.getOrderStatus()), nameLike(orderSearch.getMemberName()))
+                .limit(1000)
+                .fetch();
+    }
+
+    private BooleanExpression nameLike(String memberName) {
+        if (!StringUtils.hasText(memberName)) {
+            return null;
+        }
+        return QMember.member.name.like(memberName);
+    }
+
+    private BooleanExpression statusEq(OrderStatus statusCond) {
+        if (statusCond == null) {
+            return null;
+        }
+        return QOrder.order.status.eq(statusCond);
+    }
 
     public List<Order> findAllWithMemberDelivery() {
         return em.createQuery(
