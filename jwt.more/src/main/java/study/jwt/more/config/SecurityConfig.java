@@ -13,12 +13,15 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.authentication.logout.LogoutFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
+import study.jwt.more.jwt.CustomLogoutFilter;
 import study.jwt.more.jwt.JwtFilter;
 import study.jwt.more.jwt.JwtUtil;
 import study.jwt.more.jwt.LoginFilter;
 import study.jwt.more.oauth2.CustomSuccessHandler;
+import study.jwt.more.repository.RefreshRepository;
 import study.jwt.more.service.CustomOAuth2UserService;
 
 import java.util.Collections;
@@ -32,12 +35,17 @@ public class SecurityConfig {
     //AuthenticationManager 에 주입할 AuthenticationConfiguration 주입
     private final CustomOAuth2UserService customOAuth2UserService;
     private final CustomSuccessHandler customSuccessHandler;
+    private final RefreshRepository refreshRepository;
 
-    public SecurityConfig(JwtUtil jwtUtil, AuthenticationConfiguration configuration, CustomOAuth2UserService customOAuth2UserService, CustomSuccessHandler customSuccessHandler) {
+    public SecurityConfig(JwtUtil jwtUtil, AuthenticationConfiguration configuration,
+                          CustomOAuth2UserService customOAuth2UserService,
+                          CustomSuccessHandler customSuccessHandler,
+                          RefreshRepository refreshRepository) {
         this.jwtUtil = jwtUtil;
         this.configuration = configuration;
         this.customOAuth2UserService = customOAuth2UserService;
         this.customSuccessHandler = customSuccessHandler;
+        this.refreshRepository = refreshRepository;
     }
 
     @Bean
@@ -49,6 +57,8 @@ public class SecurityConfig {
                 .formLogin(auth -> auth.disable());
         http
                 .httpBasic((auth) -> auth.disable());
+
+
 
 //        http
 //                .oauth2Login(oauth2 -> oauth2
@@ -85,11 +95,14 @@ public class SecurityConfig {
 
       // OAuth2로 인한 로그인 방식이기에 Login Filtet가 따로 필요하질 않음
        http    //jwt 로 인해 새로 커스텀한 필터 추가 UsernamePasswordAuthenticationFilter의 위치로 설정
-                .addFilterAt(new LoginFilter(authenticationManager(configuration),jwtUtil), UsernamePasswordAuthenticationFilter.class);
+                .addFilterAt(new LoginFilter(authenticationManager(configuration),jwtUtil,refreshRepository), UsernamePasswordAuthenticationFilter.class);
                 //기존 필터에서 교체 시 에는 addFilterAt사용
 
         http    //LoginFilter 실행 전으로 순서지정하여 이미 로그인 시 처리하여 로그인 필터로 반복 없앰
                 .addFilterBefore(new JwtFilter(jwtUtil), LoginFilter.class);
+
+        http
+                .addFilterBefore(new CustomLogoutFilter(jwtUtil, refreshRepository), LogoutFilter.class);
 
         http
                 .sessionManagement(session -> session
