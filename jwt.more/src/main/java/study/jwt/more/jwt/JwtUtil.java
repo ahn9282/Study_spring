@@ -39,6 +39,9 @@ public class JwtUtil {
                 .parseClaimsJws(token).getBody().getExpiration().before(new Date());
     }
 
+    public String getCategory(String token) {
+        return Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token).getBody().get("category", String.class);
+    }
     public String createJwt(String username, String role, Long expireMs) {
         Claims claims = Jwts.claims();
         claims.put("username", username);
@@ -49,6 +52,18 @@ public class JwtUtil {
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + expireMs))
                 .signWith(key, SignatureAlgorithm.HS256)
+                .compact();
+    }
+
+    public String createJwt(String category,String username, String role, Long expireMs) {
+
+        return Jwts.builder()
+                .claim("category", category)
+                .claim("username", username)
+                .claim("role", role)
+                .setIssuedAt(new Date(System.currentTimeMillis()))
+                .setExpiration(new Date(System.currentTimeMillis() + expireMs))
+                .signWith(key)
                 .compact();
     }
 }

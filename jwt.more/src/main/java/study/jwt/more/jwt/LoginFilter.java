@@ -2,9 +2,11 @@ package study.jwt.more.jwt;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -48,19 +50,35 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
     //로그인 성공 시 실행하는 메서드
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authentication) throws IOException, ServletException {
-        CustomUserDetails customUserDetails = (CustomUserDetails) authentication.getPrincipal();
-        String username = customUserDetails.getUsername();
-        Collection<? extends GrantedAuthority> authorities = customUserDetails.getAuthorities();
+//        CustomUserDetails customUserDetails = (CustomUserDetails) authentication.getPrincipal();
+//        String username = customUserDetails.getUsername();
+//        Collection<? extends GrantedAuthority> authorities = customUserDetails.getAuthorities();
+//        Iterator<? extends GrantedAuthority> iterator = authorities.iterator();
+//        GrantedAuthority auth = iterator.next();
+//
+//        String role = auth.getAuthority();
+//
+//        //jwt 토큰 생성
+//        String token = jwtUtil.createJwt(username, role, 60 * 60 * 10L);
+//
+//        response.addHeader("Authorization", "Bearer " + token);
+//        //규약(?) 정의(?) 에 맞춰 토큰을 header에 담기
+        // ==================== 기존 jwt 로직 단일 토큰 +====================================
+
+        //==================== 다중 토큰 발급 로직 ====================================
+        String username = authentication.getName();
+
+        Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
         Iterator<? extends GrantedAuthority> iterator = authorities.iterator();
         GrantedAuthority auth = iterator.next();
-
         String role = auth.getAuthority();
 
-        //jwt 토큰 생성
-        String token = jwtUtil.createJwt(username, role, 60 * 60 * 10L);
-
-        response.addHeader("Authorization", "Bearer " + token);
-        //규약(?) 정의(?) 에 맞춰 토큰을 header에 담기
+        //토큰 생성
+        String access = jwtUtil.createJwt("access", username, role, 600000L);
+        String refresh = jwtUtil.createJwt("refresh", username, role, 86400000L);
+        response.setHeader("access", access);
+        response.addCookie(createRepoCookie("refresh", refresh));
+        response.setStatus(HttpStatus.OK.value());
     }
 
 
@@ -71,4 +89,14 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
 
     }
 
+    private Cookie createRepoCookie(String key, String value) {
+        Cookie cookie = new Cookie(key, value);
+        cookie.setMaxAge(24 * 60 * 60);
+       // cookie.setPath("/");
+        cookie.setHttpOnly(true);
+
+        return cookie;
+    }
+
 }
+
