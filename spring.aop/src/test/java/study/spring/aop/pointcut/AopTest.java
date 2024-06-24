@@ -1,4 +1,4 @@
-package study.spring.aop;
+package study.spring.aop.pointcut;
 
 import lombok.extern.slf4j.Slf4j;
 import org.assertj.core.api.Assertions;

@@ -1,4 +1,4 @@
-package study.spring.aop;
+package study.spring.aop.pointcut;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
