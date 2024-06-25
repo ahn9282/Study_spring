@@ -1,13 +1,20 @@
 package hello.jpa.study2.api;
 
 
+import hello.jpa.study2.domain.Address;
+import hello.jpa.study2.domain.Member;
 import hello.jpa.study2.domain.Order;
 import hello.jpa.study2.repository.OrderRepository;
 import hello.jpa.study2.repository.OrderSearch;
 import hello.jpa.study2.repository.order.simplequery.OrderSimpleQueryRepository;
 import hello.jpa.study2.repository.order.simplequery.SimpleOrderQueryDto;
+import jakarta.persistence.EntityManager;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,6 +27,7 @@ import static java.util.stream.Collectors.toList;
 @RequiredArgsConstructor
 public class OrderSimpleApiController {
 
+    private final EntityManager em;
     private final OrderRepository orderRepository;
     private final OrderSimpleQueryRepository orderSimpleQueryRepository;
 
@@ -66,5 +74,44 @@ public class OrderSimpleApiController {
         return orderSimpleQueryRepository.findOrderDtos();
     }
 
+    @GetMapping("/jpa/jointest")
+    public ResponseEntity<?> joinTest(){
+        Object result = em.createQuery("select m from Member m ")
+                .getResultList();
+        List<Member> member = (List<Member>)result;
+        Order order = em.find(Order.class, member.get(0).getId());
+        JoinDTO joinDTO = new JoinDTO();
+        joinDTO.setName(member.get(0).getName());
+        joinDTO.setAddress(member.get(0).getAddress());
+        joinDTO.setOrder(order);
 
+        log.info("result : {}", joinDTO);
+        return ResponseEntity.ok(joinDTO);
+    }
+
+    @Getter
+    @Setter
+    static class JoinDTO {
+        private String name;
+        private Order order;
+        private Address address;
+
+        public JoinDTO() {
+        }
+
+        @Override
+        public String toString() {
+            return "JoinDTO{" +
+                    "name='" + name + '\'' +
+                    ", order=" + order.getStatus() +
+                    ", address=" + address +
+                    '}';
+        }
+
+        public void joinDTO(String name, Order order, Address address) {
+            this.name = name;
+            this.order = order;
+            this.address = address;
+        }
+    }
 }

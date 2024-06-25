@@ -2,9 +2,11 @@ package hello.jpa.study2.domain;
 
 import jakarta.persistence.Embeddable;
 import lombok.Getter;
+import lombok.ToString;
 
 @Embeddable
 @Getter
+@ToString
 public class Address {
 
     private String city;
