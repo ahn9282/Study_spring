@@ -1,6 +1,7 @@
 package study.jpa.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -31,7 +32,6 @@ public class Order {
     @Enumerated(STRING)
     @Column(length = 10)
     private OrderStatus status;
-
 
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -83,7 +83,7 @@ public class Order {
     public int getTotalPrice(){
         int totalPrice = 0;
         for (OrderItem orderItem : orderItems) {
-            totalPrice += orderItem.getOrderPrice();
+            totalPrice += orderItem.getTotalPrice();
         }
         return totalPrice;
     }

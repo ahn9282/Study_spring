@@ -4,11 +4,14 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import jakarta.persistence.criteria.*;
 import lombok.RequiredArgsConstructor;
+import org.hibernate.annotations.BatchSize;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
+import study.jpa.api.OrderSimpleApiController;
 import study.jpa.domain.Member;
 import study.jpa.domain.Order;
 import study.jpa.domain.OrderSearch;
+import study.jpa.dto.OrderSimpleQueryDto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +35,7 @@ public class OrderRepository {
                 .getResultList();
     }
 
-    public List<?> findAll(OrderSearch orderSearch) {
+    public List<Order> findAll(OrderSearch orderSearch) {
 
         String jpql = "select o from Order o join o.member m";
         boolean isFirstCondition = true;
@@ -87,4 +90,35 @@ public class OrderRepository {
         //최대 1000 건
         return query.getResultList();
     }
+
+    public List<Order> findAllWithMemberDelivery() {
+        return em.createQuery("select o from Order o " +
+                        "join fetch o.member m " +
+                        "join fetch o.delivery d", Order.class)
+                .getResultList();
+    }
+
+
+    public List<Order> findAllWithItem() {
+        return em.createQuery("select o from Order o " +
+                "join fetch o.member m " +
+                "join fetch o.delivery d" +
+                " join fetch o.orderItems oi " +
+                "join fetch oi.item i ", Order.class)
+                .getResultList();
+    }
+
+    //일 대 다 관계의 컬렉션은 페치조인이 아닌 지연 로딩으로 조회한다.
+    @BatchSize(size = 10) // 지연 로딩에 Batch 설정을 통해 지욘로딩 쿼리의 성능을 최적화한다.
+    public List<Order> findAllWithItem_ex(int offset, int limit) {
+        List<Order> result = em.createQuery("select o from Order o " +
+                        "join fetch o.member m " +
+                        "join fetch o.delivery d", Order.class)
+                .setFirstResult(offset)
+                .setMaxResults(limit)
+                .getResultList();
+
+        return result;
+    }
+
 }

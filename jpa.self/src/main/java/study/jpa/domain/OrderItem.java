@@ -1,7 +1,9 @@
 package study.jpa.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,12 +18,14 @@ public class OrderItem {
     @Column(name = "oredr_item_id")
     private Long id;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="item_id")
     private Item item;
     private int orderPrice;
     private int count;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name="order_id")
     private Order order;
@@ -42,5 +46,6 @@ public class OrderItem {
     public int getTotalPrice(){
         return getOrderPrice() * getCount();
     }
+
 
 }
