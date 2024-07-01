@@ -3,15 +3,15 @@ package study.querydsl.start.dto;
 import lombok.Data;
 
 @Data
-public class MemberDto {
-    private String username;
+public class UserDto {
+    private String name;
     private int age;
 
-    public MemberDto() {
+    public UserDto() {
     }
 
-    public MemberDto(String username, int age) {
-        this.username = username;
+    public UserDto(String username, int age) {
+        this.name = username;
         this.age = age;
     }
 }
