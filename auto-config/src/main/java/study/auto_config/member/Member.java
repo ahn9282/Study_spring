@@ -1,2 +1,19 @@
-package study.auto_config.member;public class Member {
+package study.auto_config.member;
+
+import lombok.Data;
+
+@Data
+public class Member {
+
+
+    private String memberId;
+    private String name;
+
+    public Member() {
+    }
+
+    public Member(String memberId, String name) {
+        this.memberId = memberId;
+        this.name = name;
+    }
 }
