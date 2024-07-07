@@ -10,18 +10,17 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class Member {
-
+public class Log {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String username;
+    private String message;
 
-    public Member() {
+    public Log() {
     }
 
-    public Member(String username) {
-        this.username = username;
+    public Log(String message) {
+        this.message = message;
     }
 }
