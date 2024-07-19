@@ -1,4 +1,4 @@
-package study.querdsl.self;
+package study.querydsl.self;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
