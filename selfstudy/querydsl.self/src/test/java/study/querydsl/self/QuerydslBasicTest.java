@@ -313,6 +313,30 @@ public class QuerydslBasicTest {
         }
     }
 
+
+    @Test
+    void simpleProjection(){
+        List<Member> result = queryFactory
+                .select(member)
+                .from(member)
+                .fetch();
+        for (Member member1 : result) {
+            System.out.println("member1 = " + member1);
+        }
+    }
+    @Test
+    void  tupleProjection(){
+        List<Tuple> result = queryFactory
+                .select(member.username, member.age)
+                .from(member)
+                .fetch();
+        for (Tuple tuple : result) {
+            String username = tuple.get(member.username);
+            Integer age = tuple.get(member.age);
+            System.out.println("username = " + username + ", age : " + age);
+        }
+    }
+
     @BeforeEach
     void before(){
         queryFactory = new JPAQueryFactory(em);
