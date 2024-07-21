@@ -1,0 +1,2 @@
+package study.querydsl.self.dto;public class MemberSearchCondition {
+}
