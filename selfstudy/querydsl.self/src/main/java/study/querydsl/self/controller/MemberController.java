@@ -1,10 +1,11 @@
-package study.querydsl.controller;
+package study.querydsl.self.controller;
 
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import study.querydsl.self.dto.MemberSearchCondition;
@@ -40,6 +41,7 @@ public class MemberController {
     }
 
     @GetMapping("/members")
+    @Transactional
     public ResponseEntity<Integer> getMembers() {
         int value = 0;
         Team teamA = new Team("teamA");

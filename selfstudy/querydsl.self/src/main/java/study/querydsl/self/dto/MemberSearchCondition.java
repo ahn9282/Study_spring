@@ -1,2 +1,13 @@
-package study.querydsl.self.dto;public class MemberSearchCondition {
+package study.querydsl.self.dto;
+
+
+import lombok.Data;
+
+@Data
+public class MemberSearchCondition {
+
+    private String username;
+    private String teamName;
+    private Integer ageGoe;
+    private Integer ageLoe;
 }
