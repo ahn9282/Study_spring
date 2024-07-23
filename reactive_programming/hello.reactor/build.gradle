@@ -36,6 +36,10 @@ dependencies {
 
 	//reactor
 	implementation 'io.projectreactor:reactor-core'
+
+	//json library
+	implementation 'com.jayway.jsonpath:json-path'
+	implementation 'net.minidev:json-smart'
 }
 
 tasks.named('test') {

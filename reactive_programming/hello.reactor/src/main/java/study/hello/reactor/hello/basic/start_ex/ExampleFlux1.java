@@ -1,8 +1,8 @@
-package study.hello.reactor.hello;
+package study.hello.reactor.hello.basic.start_ex;
 
 import reactor.core.publisher.Flux;
 
-public class Example1 {
+public class ExampleFlux1 {
     public static void main(String[] args) {
         Flux<String> sequence = Flux.just("Hello", "Reactor");//제공
         sequence.map(data -> data.toLowerCase())// 가공
