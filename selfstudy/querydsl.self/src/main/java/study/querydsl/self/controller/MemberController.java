@@ -2,8 +2,10 @@ package study.querydsl.self.controller;
 
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +19,7 @@ import study.querydsl.self.repository.MemberRepository;
 
 import java.util.List;
 
+@Slf4j
 @RestController
 @RequiredArgsConstructor
 public class MemberController {
@@ -38,6 +41,19 @@ public class MemberController {
     @GetMapping("/v3/members")
     public Page<MemberTeamDto> searchMemberV3(MemberSearchCondition condition, Pageable pageable) {
         return memberRepository.searchPageComplex(condition, pageable);
+    }
+
+    @GetMapping("/v4/members")
+    public Slice<MemberTeamDto> searchMemberV4(MemberSearchCondition condition) {
+        return memberRepository.searchSliceDto(condition);
+    }
+
+    @GetMapping("/v5/members")
+    public Slice<MemberTeamDto> searchMemberV5(MemberSearchCondition condition, Pageable pageable) {
+        Slice<MemberTeamDto> result = memberRepository.searchSliceDtoPaging(condition, pageable);
+        log.info("pageable : {}", pageable);
+        log.info("hasNext : {}", result.hasNext());
+        return result;
     }
 
     @GetMapping("/members")

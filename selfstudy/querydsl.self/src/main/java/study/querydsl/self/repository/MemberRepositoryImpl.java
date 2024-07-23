@@ -7,9 +7,7 @@ import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.*;
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
 import org.springframework.data.support.PageableExecutionUtils;
 import study.querydsl.self.dto.MemberSearchCondition;
@@ -155,4 +153,45 @@ public class MemberRepositoryImpl extends QuerydslRepositorySupport implements M
     private BooleanExpression ageLoe(Integer ageLoe) {
         return (ageLoe != null) ? member.age.loe(ageLoe) : null;
     }
+
+
+    // =====================연습용 =========================
+
+    @Override
+    public Slice<MemberTeamDto> searchSliceDto(MemberSearchCondition condition) {
+        List<MemberTeamDto> content = queryFactory
+                .select(new QMemberTeamDto(
+                        member.id, member.username, member.age,
+                        team.id.as("teamId"),
+                        team.name.as("teamName"))
+                )
+                .from(member)
+                .where()
+                .orderBy(member.age.desc())
+                .fetch();
+
+        return new SliceImpl<>(content);
+    }
+
+    @Override
+    public Slice<MemberTeamDto> searchSliceDtoPaging(MemberSearchCondition condition, Pageable pageable) {
+        List<MemberTeamDto> content = queryFactory
+                .select(new QMemberTeamDto(
+                        member.id, member.username, member.age,
+                        team.id.as("teamId"),
+                        team.name.as("teamName"))
+                )
+                .from(member)
+                .where()
+                .orderBy(member.id.asc())
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize() + 1)
+                .fetch();
+        boolean hasNext = content.size() == pageable.getPageSize() + 1;
+        if(hasNext){
+            content.remove(content.size() - 1);
+        }
+        return new SliceImpl<>(content, pageable, hasNext);
+    }
+
 }
