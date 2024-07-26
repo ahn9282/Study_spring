@@ -1,12 +1,11 @@
-package study.hello.reactor.hello.operator.division;
-
+package study.hello.reactor.hello.reactor.operator.division;
 
 import lombok.extern.slf4j.Slf4j;
 import org.reactivestreams.Subscription;
 import reactor.core.publisher.BaseSubscriber;
 import reactor.core.publisher.Flux;
 import reactor.math.MathFlux;
-import study.hello.reactor.hello.InitTest;
+import study.hello.reactor.hello.reactor.InitTest;
 
 import java.util.ArrayList;
 import java.util.List;
