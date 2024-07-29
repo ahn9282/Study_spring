@@ -13,14 +13,14 @@ import static java.net.URI.create;
 
 @Service
 @Slf4j
-public class WikimediaChanges {
+public class WikimediaChangesProducer {
 
     private KafkaTemplate<String, String> kafkaTemplate;
 
-    public WikimediaChanges(KafkaTemplate<String, String> kafkaTemplate) {
+    public WikimediaChangesProducer(KafkaTemplate<String, String> kafkaTemplate) {
         this.kafkaTemplate = kafkaTemplate;
     }
-    public void sendMessage(String message) throws InterruptedException {
+    public void sendMessage() throws InterruptedException {
 
         String topic = "wikimedia_recentChange";
 
