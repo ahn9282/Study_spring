@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Context docBase="C:\studyMy\spring\springboot\build\exploded">
+  <Resources cacheMaxSize="10240">
+    <PreResources base="C:/studyMy/spring/springboot/build/classes/java/main" className="org.apache.catalina.webresources.DirResourceSet" webAppMount="/WEB-INF/classes"/>
+    <PreResources base="C:/studyMy/spring/springboot/build/resources/main" className="org.apache.catalina.webresources.DirResourceSet" webAppMount="/WEB-INF/classes"/>
+    <PostResources base="C:/Users/tjqwn/.gradle/caches/modules-2/files-2.1/org.springframework/spring-webmvc/6.1.10/476344c2f21ab070bc72108375d9355f2ec0ddd1/spring-webmvc-6.1.10.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/spring-webmvc-6.1.10.jar"/>
+    <PostResources base="C:/Users/tjqwn/.gradle/caches/modules-2/files-2.1/org.springframework/spring-context/6.1.10/6f869ea35a26028f3bfbfb52c72ef2b077fbb6e5/spring-context-6.1.10.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/spring-context-6.1.10.jar"/>
+    <PostResources base="C:/Users/tjqwn/.gradle/caches/modules-2/files-2.1/org.springframework/spring-aop/6.1.10/aa6a147eb08820fb503a992a8fe2c9fee3439129/spring-aop-6.1.10.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/spring-aop-6.1.10.jar"/>
+    <PostResources base="C:/Users/tjqwn/.gradle/caches/modules-2/files-2.1/org.springframework/spring-web/6.1.10/876a856af61ef5712fb9a3013b798aa2b4a9475e/spring-web-6.1.10.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/spring-web-6.1.10.jar"/>
+    <PostResources base="C:/Users/tjqwn/.gradle/caches/modules-2/files-2.1/org.springframework/spring-beans/6.1.10/a49252929fb2918f73eb7659ef98dff7306a7c2c/spring-beans-6.1.10.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/spring-beans-6.1.10.jar"/>
+    <PostResources base="C:/Users/tjqwn/.gradle/caches/modules-2/files-2.1/org.springframework/spring-expression/6.1.10/a17d61f1388d0e13d6e7a740304e9d648fffc7c/spring-expression-6.1.10.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/spring-expression-6.1.10.jar"/>
+    <PostResources base="C:/Users/tjqwn/.gradle/caches/modules-2/files-2.1/org.springframework/spring-core/6.1.10/eaf5b1f3e3bb5aa8b45ab255cf3270c1c4578f1d/spring-core-6.1.10.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/spring-core-6.1.10.jar"/>
+    <PostResources base="C:/Users/tjqwn/.gradle/caches/modules-2/files-2.1/io.micrometer/micrometer-observation/1.12.7/41cf5c9848d65c1559b9e78809fb22b7d85ba337/micrometer-observation-1.12.7.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/micrometer-observation-1.12.7.jar"/>
+    <PostResources base="C:/Users/tjqwn/.gradle/caches/modules-2/files-2.1/org.springframework/spring-jcl/6.1.10/c22c18cf6ed7d768676816347f020a6868663224/spring-jcl-6.1.10.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/spring-jcl-6.1.10.jar"/>
+    <PostResources base="C:/Users/tjqwn/.gradle/caches/modules-2/files-2.1/io.micrometer/micrometer-commons/1.12.7/c35759a840f3e5a0ceda8fbf42874a0e6c730c45/micrometer-commons-1.12.7.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/micrometer-commons-1.12.7.jar"/>
+  </Resources>
+</Context>
