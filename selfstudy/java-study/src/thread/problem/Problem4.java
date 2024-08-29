@@ -2,6 +2,8 @@ package thread.problem;
 
 import thread.util.MyLogger;
 
+
+
 public class Problem4 {
     static int num = 0;
     public static void main(String[] args) {
