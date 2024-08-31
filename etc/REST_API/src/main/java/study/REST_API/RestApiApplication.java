@@ -11,9 +11,9 @@ public class RestApiApplication {
 	public static void main(String[] args) {
 		ConfigurableApplicationContext ac = SpringApplication.run(RestApiApplication.class, args);
 		String[] allBeans = ac.getBeanDefinitionNames();
-		for (String bean : allBeans) {
-			System.out.println("bean = " + bean);
-		}
+//		for (String bean : allBeans) {
+//			System.out.println("bean = " + bean);
+//		}
 	}
 
 }

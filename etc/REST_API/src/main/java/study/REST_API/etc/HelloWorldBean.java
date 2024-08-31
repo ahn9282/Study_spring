@@ -6,5 +6,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class HelloWorldBean {
-    private final String message;
+    private  String message;
+
+
 }
