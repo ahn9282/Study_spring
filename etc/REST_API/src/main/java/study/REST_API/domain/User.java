@@ -31,6 +31,7 @@ public class User {
     //@JsonIgnore
     private String ssn;
 
+
     public User() {
         this.joinDate = new Date();
     }
