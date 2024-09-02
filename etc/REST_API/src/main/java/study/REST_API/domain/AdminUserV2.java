@@ -7,12 +7,13 @@ import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.Date;
 
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Setter
 @JsonFilter("UserInfoV2")
 public class AdminUserV2 extends AdminUser {
     private String grade;
