@@ -10,7 +10,7 @@ import org.springframework.kafka.config.TopicBuilder;
 public class KafkaTopicConfig {
 
     @Bean
-    public NewTopic javaGuildTopic() {
+    public NewTopic testTopic() {
         return TopicBuilder.name("test-study")
                 .partitions(5)
                 .build();

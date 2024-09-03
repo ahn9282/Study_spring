@@ -13,7 +13,6 @@ import study.kafka.tutorial.payload.User;
 @Service
 public class JsonKafkaProducer {
 
-
     private final KafkaTemplate<String, User> kafkaTemplate;
 
     public JsonKafkaProducer(KafkaTemplate<String, User> kafkaTemplate) {

@@ -4,6 +4,7 @@ package study.REST_API.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -17,7 +18,11 @@ import java.util.Date;
 @AllArgsConstructor
 @JsonIgnoreProperties(value={"password", "ssn"})
 @Schema(description = "사용자 상세 정보를 위한 도메인 객체")
+@Entity
+@Table(name="users")
 public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Schema(title="사용자 ID", description = "사용자 ID는 자동 생성 됩니다.")
     private Integer id;
 
@@ -45,6 +50,14 @@ public class User {
     public User(Integer id, String name) {
         this.id = id;
         this.name = name;
+        this.joinDate = new Date();
+    }
+
+    public User(Integer id,String name, String password, String ssn) {
+        this.ssn = ssn;
+        this.password = password;
+        this.name = name;
+        this.id = id;
         this.joinDate = new Date();
     }
 }
