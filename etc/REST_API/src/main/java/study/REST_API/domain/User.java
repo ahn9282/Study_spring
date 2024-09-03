@@ -3,6 +3,7 @@ package study.REST_API.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Past;
@@ -12,7 +13,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.context.annotation.EnableMBeanExport;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -22,6 +25,7 @@ import java.util.Date;
 @Table(name="users")
 public class User {
     @Id
+    @Column(name="user_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Schema(title="사용자 ID", description = "사용자 ID는 자동 생성 됩니다.")
     private Integer id;
@@ -42,6 +46,9 @@ public class User {
     @Schema(title="사용자 주민번호", description = "사용자 주민번호를 입력합니다.")
     private String ssn;
 
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Post> posts = new ArrayList<>();
+
 
     public User() {
         this.joinDate = new Date();
@@ -58,6 +65,13 @@ public class User {
         this.password = password;
         this.name = name;
         this.id = id;
+        this.joinDate = new Date();
+
+    }
+    public User(String name, String password, String ssn) {
+        this.ssn = ssn;
+        this.password = password;
+        this.name = name;
         this.joinDate = new Date();
     }
 }
