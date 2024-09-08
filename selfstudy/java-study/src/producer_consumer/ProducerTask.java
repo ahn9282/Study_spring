@@ -20,3 +20,4 @@ public class ProducerTask implements Runnable {
         log("[생산 완료] : " + request + " -> " + que);
     }
 }
+
