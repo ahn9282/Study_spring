@@ -4,13 +4,12 @@ import java.util.ArrayDeque;
 import java.util.Queue;
 
 import static thread.util.MyLogger.log;
-import static thread.util.ThreadUtils.sleep;
 
-public class BoundedQueueV3 implements BoundedQueue {
+public class BoundedQueueV4 implements BoundedQueue {
     private final Queue<String> que = new ArrayDeque<>();
     private final int max;
 
-    public BoundedQueueV3(int max) {
+    public BoundedQueueV4(int max) {
         this.max = max;
     }
     public synchronized void put(String data) {
@@ -25,7 +24,7 @@ public class BoundedQueueV3 implements BoundedQueue {
         }
         que.offer(data);
         log("[put] 생산자 데이터 저장 : " + data+", notify() 호출");
-        notify();//대기 스레드 ,  WAIT -> BLOCKED
+        notifyAll();//대기 스레드 ,  WAIT -> BLOCKED
 
     }
     public synchronized String take() {
@@ -41,7 +40,7 @@ public class BoundedQueueV3 implements BoundedQueue {
 
         String data = que.poll();
         log("[take] 소비자 데이터 획득 : " + data +", notify() 호출");
-        notify();
+        notifyAll();
         return data;
     }
     @Override

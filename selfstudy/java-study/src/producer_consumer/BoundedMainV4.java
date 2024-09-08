@@ -6,10 +6,10 @@ import java.util.List;
 import static thread.util.MyLogger.log;
 import static thread.util.ThreadUtils.sleep;
 
-public class BoundedMainV3 {
+public class BoundedMainV4 {
     public static void main(String[] args) {
         //1. BoundedQueue 선택
-        BoundedQueue que = new BoundedQueueV3(2);
+        BoundedQueue que = new BoundedQueueV4(2);
         //BoundedQueue que = new BoundedQueueV2(2);
        // //BoundedQueue que = new BoundedQueueV1(3);
 
