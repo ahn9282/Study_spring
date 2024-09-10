@@ -8,21 +8,26 @@ import java.util.concurrent.locks.ReentrantLock;
 
 import static thread.util.MyLogger.log;
 
-public class BoundedQueueV4 implements BoundedQueue {
+public class BoundedQueueV5 implements BoundedQueue {
 
+    private final Lock lock = new ReentrantLock();
+    private final Condition condition = lock.newCondition();
 
     private final Queue<String> que = new ArrayDeque<>();
     private final int max;
 
-    public BoundedQueueV4(int max) {
+    public BoundedQueueV5(int max) {
         this.max = max;
     }
 
-    public  synchronized void put(String data) {
+    public  void put(String data) {
+        lock.lock();
+        try{
+
         while (que.size() == max) {
             log("[put] 큐가 가득 참, 생산자 대기");
             try {
-                wait();//RUNNABLE -> WAITING, 락 반납
+                condition.await();
                 log("[put] 생산자 깨어남");
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
@@ -30,15 +35,21 @@ public class BoundedQueueV4 implements BoundedQueue {
         }
         que.offer(data);
         log("[put] 생산자 데이터 저장 : " + data + ", notify() 호출");
-        notifyAll();//대기 스레드 ,  WAIT -> BLOCKED
+        condition.signal();
+        }finally{
+            lock.unlock();
+        }
 
     }
 
     public synchronized String take() {
+        lock.lock();
+        try{
+
         while (que.isEmpty()) {
             log("[take] 큐에 데이터가 없음, 소비자 대기");
             try {
-                wait();//락을 반납하고 대기
+                condition.await();
                 log("[take] 소비자 깨어남");
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
@@ -47,8 +58,11 @@ public class BoundedQueueV4 implements BoundedQueue {
 
         String data = que.poll();
         log("[take] 소비자 데이터 획득 : " + data + ", notify() 호출");
-        notifyAll();
+        condition.signal();
         return data;
+        }finally {
+            lock.unlock();
+        }
     }
 
     @Override
