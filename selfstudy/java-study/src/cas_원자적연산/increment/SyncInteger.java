@@ -1,4 +1,4 @@
-package cas_원자적연산;
+package cas_원자적연산.increment;
 
 public class SyncInteger implements IncrementInteger {
 

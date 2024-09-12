@@ -1,8 +1,4 @@
-package cas_원자적연산;
-
-import java.util.ArrayList;
-
-import static thread.util.ThreadUtils.sleep;
+package cas_원자적연산.increment;
 
 public class IncrementPerformanceMain {
 
