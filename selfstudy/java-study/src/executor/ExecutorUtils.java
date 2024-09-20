@@ -9,7 +9,6 @@ public abstract class ExecutorUtils {
 
     public static void printState(ExecutorService executorService) {
 
-
         if (executorService instanceof ThreadPoolExecutor poolExecutor) {
             int pool = poolExecutor.getPoolSize(); //스레드 개수
             int active = poolExecutor.getActiveCount();  // 작업 중인 스레드의 개수

@@ -1,11 +1,11 @@
-package executor;
+package executor.future;
 
 import java.util.Random;
 
 import static thread.util.MyLogger.log;
 import static thread.util.ThreadUtils.sleep;
 
-public class RunnableMain {
+public class RunnableFutureMain {
     public static void main(String[] args) throws InterruptedException {
         MyRunnable task = new MyRunnable();
         Thread thread1 = new Thread(task, "thread - 1");
