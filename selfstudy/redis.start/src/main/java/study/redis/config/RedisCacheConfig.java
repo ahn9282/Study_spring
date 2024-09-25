@@ -29,7 +29,7 @@ public class RedisCacheConfig {
                 .serializeValuesWith(// Redis에 Value를 저장할 때 Json으로 직렬화 저장
                         RedisSerializationContext.SerializationPair.fromSerializer( new Jackson2JsonRedisSerializer<Object>(Object.class) )
                 )
-                .entryTtl(Duration.ofMinutes(1L));// 데이터의 만료기간(TTL) 설정
+                .entryTtl(Duration.ofMinutes(3L));// 데이터의 만료기간(TTL) 설정
 
         return RedisCacheManager
                 .RedisCacheManagerBuilder
