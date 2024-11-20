@@ -3,24 +3,21 @@ package io.start;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Arrays;
 
-public class StreamStartMain1 {
+public class StreamStartMain4 {
 
     public static void main(String[] args) throws IOException {
         FileOutputStream fos = new FileOutputStream("temp/hello.dat");
-        fos.write(65);
-        fos.write(66);
-        fos.write(67);
+        byte[] input = {65, 66, 67, 68};
+        fos.write(input);
         fos.close();
 
         FileInputStream fis = new FileInputStream("temp/hello.dat");
-        int data;
-
-        while ((data = fis.read()) != -1) {
-            System.out.println(data);
-
-        }
-
+        byte[] readBytes = fis.readAllBytes();
+        System.out.println(Arrays.toString(readBytes));
         fis.close();
+
+
     }
 }
